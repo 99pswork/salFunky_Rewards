@@ -135,11 +135,11 @@ contract RewardSalamander is Ownable, ReentrancyGuard {
         emit Withdraw(msg.sender, tokenReward);
     }
 
-    function claimMultipleRewards(uint256[] _tokenIds) external nonReentrant{
+    function claimMultipleRewards(uint256[] memory _tokenIds) external nonReentrant{
         require(block.number < bonusEndBlock, "Rewards Have Been Stopped");
         uint256 tokenReward = 0;
         uint256 tokenBal = rewardToken.balanceOf(address(this));
-        for(int i=0; i<_tokenIds.length; i++){
+        for(uint256 i=0; i<_tokenIds.length; i++){
             require(msg.sender == nftAddress.ownerOf(_tokenIds[i]), "You are not owner of token");
             tokenReward += calculateReward(_tokenIds[i]);
             tokenLastReward[_tokenIds[i]] = block.number;
