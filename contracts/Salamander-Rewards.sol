@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 // File: contracts/SmartChefInitializable.sol
 
 pragma solidity >= 0.8.1;
